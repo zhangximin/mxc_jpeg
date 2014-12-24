@@ -1,0 +1,7 @@
+1.jpg
+cscope*
+*.so
+*.o
+*.old
+tags
+test.c

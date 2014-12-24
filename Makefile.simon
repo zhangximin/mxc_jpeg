@@ -1,0 +1,24 @@
+CC=$(CROSS_COMPILE)gcc
+LINK=$(CROSS_COMPILE)gcc
+
+OBJ = mxc_jpeg.o \
+	  g2d.o
+
+INC = -I/home/simon/currentWork/fsl-community-bsp/v85/tmp/sysroots/imx6dlsabresd/usr/include -I/home/simon/currentWork/fsl-community-bsp/v85/tmp/sysroots/imx6dlsabresd/usr/src/kernel/include
+
+SYS_ROOT = /home/simon/currentWork/fsl-community-bsp/v85/tmp/sysroots/imx6dlsabresd 
+
+TARGET = libmxc_jpeg.so
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(LINK) -shared -fPIC $(OBJ) --sysroot=${SYS_ROOT} -o $(TARGET) ${LFLAGS} -lrt -lvpu -lg2d -lpthread 
+
+%.o: %.c
+	$(CC) $(INC) -Wall -O2 -fPIC -g -c $^ -o $@
+
+.PHONY: clean
+clean:
+	rm -f $(TARGET) $(OBJ)
+
