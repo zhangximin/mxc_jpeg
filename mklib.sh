@@ -4,7 +4,7 @@ if [ -f Makefile ];then
 
 if [ -f Makefile.simon ];then
 
-export POKY_ROOT=/opt/poky/1.5.1
+export POKY_ROOT=/opt/poky/1.7.1
 
 source ${POKY_ROOT}/environment-setup-cortexa9hf-vfp-neon-poky-linux-gnueabi
 
