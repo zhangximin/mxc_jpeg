@@ -157,7 +157,7 @@ mxc_jpegdec_open()
 	oparam.bitstreamBuffer = dec->phy_bsbuf_addr;
 	oparam.bitstreamBufferSize = STREAM_BUF_SIZE;
 	oparam.pBitStream = (Uint8 *)dec->virt_bsbuf_addr;
-	oparam.reorderEnable = 0;
+	oparam.reorderEnable = 1;
 	oparam.chromaInterleave = 1;
 	oparam.mjpg_thumbNailDecEnable = 0;
 	oparam.mapType = LINEAR_FRAME_MAP;
