@@ -14,14 +14,14 @@ mv Makefile.simon Makefile
 make
 
 if [ -f libmxc_jpeg.so ];then
-${POKY_ROOT}/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi/arm-poky-linux-gnueabi-strip libmxc_jpeg.so
+#${POKY_ROOT}/sysroots/x86_64-pokysdk-linux/usr/bin/arm-poky-linux-gnueabi/arm-poky-linux-gnueabi-strip libmxc_jpeg.so
 
-if [ -d "../rootfs" ];then
-sudo cp mxc_jpeg.h ../rootfs/usr/include
-sudo cp libmxc_jpeg.so ../rootfs/usr/lib
-cp mxc_jpeg.h ~/fsl-community-bsp/nbuild/tmp/sysroots/imx6qsabrelite/usr/include/
-cp libmxc_jpeg.so ~/fsl-community-bsp/nbuild/tmp/sysroots/imx6qsabrelite/usr/lib/
-else
+#if [ -d "../rootfs" ];then
+#sudo cp mxc_jpeg.h ../rootfs/usr/include
+#sudo cp libmxc_jpeg.so ../rootfs/usr/lib
+#cp mxc_jpeg.h ~/fsl-community-bsp/nbuild/tmp/sysroots/imx6qsabrelite/usr/include/
+#cp libmxc_jpeg.so ~/fsl-community-bsp/nbuild/tmp/sysroots/imx6qsabrelite/usr/lib/
+#else
 echo ""
 echo ""
 echo "#####################################"
@@ -29,12 +29,12 @@ echo "Remember following two steps:"
 echo "  1.copy mxc_jpeg.h to /usr/include\n"
 echo "  2.copy libmxc_jpeg.so to /usr/lib\n"
 echo ""
-fi
+#fi
 
-if [ -d "~/fsl-community-bsp/nbuild/tmp/sysroots/imx6qsabrelite/usr/" ];then
-cp mxc_jpeg.h ~/fsl-community-bsp/nbuild/tmp/sysroots/imx6qsabrelite/usr/include/
-cp libmxc_jpeg.so ~/fsl-community-bsp/nbuild/tmp/sysroots/imx6qsabrelite/usr/lib/
-fi
+#if [ -d "~/fsl-community-bsp/nbuild/tmp/sysroots/imx6qsabrelite/usr/" ];then
+#cp mxc_jpeg.h ~/fsl-community-bsp/nbuild/tmp/sysroots/imx6qsabrelite/usr/include/
+#cp libmxc_jpeg.so ~/fsl-community-bsp/nbuild/tmp/sysroots/imx6qsabrelite/usr/lib/
+#fi
 
 fi
 
