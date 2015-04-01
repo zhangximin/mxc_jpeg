@@ -13,7 +13,9 @@
  * http://www.gnu.org/copyleft/gpl.html
  */
 
+#include "mxc_jpeg.h"
 #include "g2d.h"
+
 #include <fcntl.h>
 #include <errno.h>
 #include <sys/ioctl.h>
@@ -22,7 +24,6 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <linux/mxcfb.h>
-#include "mxc_jpeg.h"
 #include <linux/ipu.h>
 #include <sys/mman.h>
 #include <linux/fb.h>
@@ -60,7 +61,7 @@ static void yuv444sp_to_yuv422sp(unsigned char* yuv444sp, unsigned char* yuv422s
 	}
 }
 
-int g2d_clear_cursor(struct fb_cursor *cursor)
+int jdisp_g2d_clear_cursor(struct fb_cursor *cursor)
 {
 	int fb_w, fb_h, loff, toff;
 	struct fb_var_screeninfo fb_var;
@@ -103,7 +104,7 @@ int g2d_clear_cursor(struct fb_cursor *cursor)
 	return 0;
 }
 
-int g2d_cursor(struct fb_cursor *cursor)
+int jdisp_g2d_cursor(struct fb_cursor *cursor)
 {
 	int in_left, in_top, in_right, in_bottom;
 	int fb_w, fb_h, loff, toff;
@@ -185,7 +186,7 @@ err:
 	return 0;
 }
 
-int g2d_rgbcopy(Uint32 src_virt_addr, Uint32 srcsize,
+int jdisp_g2d_rgbcopy(Uint32 src_virt_addr, Uint32 srcsize,
 			int width, int height, int loff, int toff)
 {
 	int in_left, in_top, in_right, in_bottom;
@@ -257,7 +258,7 @@ int g2d_rgbcopy(Uint32 src_virt_addr, Uint32 srcsize,
 	return 0;
 }
 
-int g2d_convert(struct decode *dec)
+int jdisp_g2d_convert(struct decode *dec)
 {
 	int fb_w, fb_h;
 	int in_right, in_bottom, in_left, in_top;
@@ -360,7 +361,7 @@ int g2d_convert(struct decode *dec)
 }
 
 int
-g2d_init()
+jdisp_g2d_init()
 {
 	int fd_fb0 = 0, fd_fb1 = 0, fb0_size = 0, fb1_size = 0;
 	int fb_w, fb_h;
@@ -424,7 +425,7 @@ g2d_init()
 }
 
 void
-g2d_uninit()
+jdisp_g2d_uninit()
 {
 	struct mxcfb_gbl_alpha gbl_alpha;
 	int i;

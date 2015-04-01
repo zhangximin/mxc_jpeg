@@ -19,9 +19,12 @@
 #ifndef  __MXC_JPEG_H__
 #define  __MXC_JPEG_H__
 
+#include  <stdio.h>
+#include  <string.h>
 #include <linux/fb.h>
 #include "vpu_lib.h"
 #include "vpu_io.h" 
+#include  <stdlib.h>
 
 extern int vpu_test_dbg_level;
 
@@ -100,21 +103,21 @@ struct decode
 	struct vpu_mem_desc mem_desc;
 };
 
-int mxc_jpegdec_init();
-void mxc_jpegdec_uninit();
-int mxc_jpegdec_open();
-int mxc_jpegdec_close();
-int mxc_jpeg_decode(Uint32 src_bsbuf_addr, Uint32 srcsize, int loff, int toff);
+int jdisp_jpegdec_init();
+void jdisp_jpegdec_uninit();
+int jdisp_jpegdec_open();
+int jdisp_jpegdec_close();
+int jdisp_jpeg_decode(Uint32 src_bsbuf_addr, Uint32 srcsize, int loff, int toff);
 
 struct frame_buf *framebuf_alloc(int format, int strideY, int height);
 void framebuf_free(struct frame_buf *fb);
 
-int g2d_init();
-void g2d_uninit();
-int g2d_convert(struct decode *dec);
-int g2d_rgbcopy(Uint32 src_virt_addr, Uint32 srcsize, 
+int jdisp_g2d_init();
+void jdisp_g2d_uninit();
+int jdisp_g2d_convert(struct decode *dec);
+int jdisp_g2d_rgbcopy(Uint32 src_virt_addr, Uint32 srcsize,
 			int width, int height, int loff, int toff);
-int g2d_cursor(struct fb_cursor *cursor);
-int g2d_clear_cursor(struct fb_cursor *cursor);
+int jdisp_g2d_cursor(struct fb_cursor *cursor);
+int jdisp_g2d_clear_cursor(struct fb_cursor *cursor);
 
 #endif  /*__MXC_JPEG_H__*/
