@@ -16,9 +16,6 @@
  * =====================================================================================
  */
 
-#include  <stdlib.h>
-#include  <stdio.h>
-#include  <string.h>
 #include  "mxc_jpeg.h"
 
 struct decode *dec;
@@ -116,7 +113,7 @@ mxc_decode_uninit()
 }
 
 int 
-mxc_jpegdec_init()
+jdisp_jpegdec_init()
 {
 	int err;
 	err = mxc_vpu_init();
@@ -133,7 +130,7 @@ mxc_jpegdec_init()
 }
 
 void
-mxc_jpegdec_uninit()
+jdisp_jpegdec_uninit()
 {
 	mxc_decode_uninit();
 	mxc_vpu_uninit();
@@ -141,7 +138,7 @@ mxc_jpegdec_uninit()
 }
 
 int
-mxc_jpegdec_open()
+jdisp_jpegdec_open()
 {
 	RetCode ret;
 	DecHandle handle = {0};
@@ -178,7 +175,7 @@ mxc_jpegdec_open()
 }
 
 int
-mxc_jpegdec_close()
+jdisp_jpegdec_close()
 {
 	RetCode ret;
 
@@ -528,7 +525,7 @@ mxc_jpegdec_start(struct decode *dec)
 }
 
 int
-mxc_jpeg_decode(Uint32 src_bsbuf_addr, Uint32 srcsize, int loff, int toff)
+jdisp_jpeg_decode(Uint32 src_bsbuf_addr, Uint32 srcsize, int loff, int toff)
 {
 	int err, ret = 0;
 
@@ -563,7 +560,7 @@ mxc_jpeg_decode(Uint32 src_bsbuf_addr, Uint32 srcsize, int loff, int toff)
 	  	goto err;
 	} 
 
-	g2d_convert(dec);
+	jdisp_g2d_convert(dec);
 
 err:
 	decoder_free_framebuffer(dec);
