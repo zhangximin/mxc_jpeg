@@ -4,9 +4,9 @@ LINK=$(CROSS_COMPILE)gcc
 OBJ = mxc_jpeg.o \
 	  g2d.o
 
-INC = -I/home/simon/currentWork/fsl-community-bsp/v85/tmp/sysroots/imx6dlsabresd/usr/include -I/home/simon/currentWork/fsl-community-bsp/v85/tmp/sysroots/imx6dlsabresd/usr/src/kernel/include
+INC = -I/home/simon/fsl-community-bsp/v85/tmp/sysroots/imx6dlsabresd/usr/include -I/home/simon/fsl-community-bsp/v85/tmp/sysroots/imx6dlsabresd/usr/src/kernel/include/uapi
 
-SYS_ROOT = /home/simon/currentWork/fsl-community-bsp/v85/tmp/sysroots/imx6dlsabresd 
+SYS_ROOT = /home/simon/fsl-community-bsp/v85/tmp/sysroots/imx6dlsabresd 
 
 TARGET = libmxc_jpeg.so
 
@@ -16,7 +16,7 @@ $(TARGET): $(OBJ)
 	$(LINK) -shared -fPIC $(OBJ) --sysroot=${SYS_ROOT} -o $(TARGET) ${LFLAGS} -lrt -lvpu -lg2d -lpthread 
 
 %.o: %.c
-	$(CC) $(INC) -Wall -O2 -fPIC -g -c $^ -o $@
+	$(CC) $(INC) -mfloat-abi=hard -Wall -O2 -fPIC -g -c $^ -o $@
 
 .PHONY: clean
 clean:
